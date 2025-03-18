@@ -11,6 +11,12 @@
  * @license   http://opensource.org/licenses/gpl-license.php GNU Public License
  * @link      https://github.com/sio-melun/geoworld
  */
+
+ require_once 'inc/manager-db.php';
+ $lesContinents = getContinent() ;
+ $lesPays = getAllCountries();
+
+
 ?><!doctype html>
 <html lang="fr" class="h-100">
 <head>
@@ -33,9 +39,15 @@
         font-size: 3.5rem;
       }
     }
+    .dropdown-menu{
+      max-height: 400px;
+      overflow-y: auto;
+      }
+    
   </style>
   <!-- Custom styles for this template -->
   <link href="css/custom.css" rel="stylesheet">
+  
 </head>
 <body class="d-flex flex-column h-100">
 <header>
@@ -59,13 +71,23 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-             aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="asie.php">Asie</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+             aria-expanded="false">Continent</a>
+             <div class="dropdown-menu" aria-labelledby="dropdown01">
+                  <?php foreach($lesContinents as $leContinent) : ?>
+                  <a class="dropdown-item" href="index2.php?name=<?= $leContinent->continent ; ?>"><?= $leContinent->continent; ?> </a>
+                  <?php endforeach ; ?>
+              </div>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">Pays</a>
+             <div class="dropdown-menu" aria-labelledby="dropdown01">
+                  <?php foreach($lesPays as $pays) : ?>
+                  <a class="dropdown-item" href="index3.php?name=<?= $pays->id ; ?>"><?= $pays->Name; ?> </a>
+                  <?php endforeach ; ?>
+              </div>
+        </li>
+      </div>
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
