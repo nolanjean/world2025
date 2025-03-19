@@ -48,7 +48,7 @@ else{
           <tr>
             <td> <?php echo $pays->Name ?></td>
             <td> <?php echo $pays->Population ?></td>
-            <td> <?php echo getCapitale($pays->Capital)->name?></td>
+            <td> <?php if (getCapitale($pays->Capital)==NULL){  echo "non capitale";} else echo getCapitale($pays->Capital)->name?></td>
           </tr>
           <?php
           }?>

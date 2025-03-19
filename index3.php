@@ -28,7 +28,7 @@ print_r($pays);
 <main role="main" class="flex-shrink-0">
 <div class="container">
         <?php  $drapeau = strtolower($pays["Code2"]); ?>
-        <h1><?php echo $pays["Name"]; ?> <img src="images/drapeau/<?php echo $drapeau; ?>.png" alt="Drapeau de <?php echo $pays["Name"]; ?>"></h1>
+        <h1><?php echo $pays["Name"]; ?> <img src="images/flag/<?php echo $drapeau; ?>.png" alt="Drapeau de <?php echo $pays["Name"]; ?>"></h1>
         <table>
             <tr>
                 <th>Code</th>
@@ -40,7 +40,7 @@ print_r($pays);
             <tr>
                 <td><?php echo $pays["Code"]?></td>
                 <td><?php echo $pays["Continent"]?></td>
-                <td><?php echo $capital->name?></td>
+                <td><?php if ($capital==NULL){  echo "non capitale";} else echo $capital->name?></td>
                 <td><?php echo $pays["Population"]?></td>
                 <td><?php echo $pays["SurfaceArea"]?></td>
             </tr>
