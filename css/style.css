@@ -1,0 +1,123 @@
+.nomPay{
+    text-align: center;
+}
+
+main{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.infoPay {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.infoPay th, .infoPay td {
+    padding: 10px;
+    border-bottom: 1px solid black; /* Ajoute une bordure seulement en bas des cellules */
+}
+
+.infoPay tr:last-child td {
+    border-bottom: none; /* Supprime la bordure en bas du dernier élément */
+}
+.test button {
+    width: 100%;
+    background-color: blue;
+    color: white;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.test button:hover {
+    background-color: darkblue; /* Changement de couleur au survol */
+}
+
+.langues table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.langues th {
+    padding: 3px;
+}
+
+.langues th {
+    border-bottom: 2px solid black; /* Bordure épaisse sous les en-têtes */
+}
+
+/*test */
+
+.details {
+    display: flex;
+    justify-content: space-between; /* Espace équilibré entre les éléments */
+    gap: 20px; /* Espacement entre les sections */
+}
+
+.details > div {
+    flex: 1; /* Chaque section prend une largeur égale */
+    min-width: 250px; /* Largeur minimale pour éviter l'écrasement */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.details th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+}
+
+h2 {
+    text-align: center;
+}
+
+/* form */
+.details form {
+    display: flex;
+    flex-direction: row; /* Affichage horizontal */
+    flex-wrap: wrap; /* Pour permettre le passage à la ligne si nécessaire */
+}
+
+.details label, input {
+    margin-right: 10px; /* Espacement entre les éléments */
+}
+
+.details label {
+    margin-right: 5px; /* Espacement entre le label et l'input */
+    width: 150px; /* Largeur fixe pour les labels */
+}
+
+.details input {
+    margin-right: 20px; /* Espacement entre les champs */
+    width: 200px; /* Largeur fixe pour les inputs */
+}
+
+img{
+    width: 75px; /* Largeur de l'image */
+    height: 50px; /* Hauteur de l'image */
+}
+
+
+/* button mette à jour */
+.details button {
+    width: 100%;
+    background-color: blue;
+    color: white;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.details button:hover {
+    background-color: darkblue; /* Changement de couleur au survol */
+}

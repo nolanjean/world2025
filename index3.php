@@ -23,7 +23,7 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
     $percentage = percentageLanguage($id);
 }
 ?>
-
+<link rel="stylesheet" href="css/style.css">
 <main role="main" class="flex-shrink-0">
 <div class="container">
         <?php  $drapeau = strtolower($pays["Code2"]); 
@@ -31,8 +31,8 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
             if (!file_exists($source)) {
               $source = "images/flag/onu.png";
             }?> 
-        <h1><?php echo $pays["Name"]; ?> <img src="<?php echo $source; ?>" alt="Drapeau de <?php echo $pays["Name"]; ?>"></h1>
-        <table>
+        <h1 class="nomPay"><?php echo $pays["Name"]; ?> <img src="<?php echo $source; ?>" alt="Drapeau de <?php echo $pays["Name"]; ?>"></h1>
+        <table class="infoPay">
             <tr>
                 <th>Code</th>
                 <th>Continent</th>
@@ -48,8 +48,10 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
                 <td><?php echo $pays["SurfaceArea"]?></td>
             </tr>
         </table>
-        <button>Voir les villes</button>
-        <div class="details">
+        <section class="test">
+            <button class="ville">Voir les villes</button>
+        </section>
+        <div class="details" class="table2Td">
             <div class="langues">
                 <h2>Langues parlées</h2>
                 <table>
@@ -102,11 +104,13 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
                     <input type="text" id="esperance" name="esperance"><br>
                     <button type="submit">Mettre à jour</button>
                 </form>
-                <button>Voir les données actualisées (wikipedia):</button>
-                <button>Espérance</button>
-                <button>Chef</button>
-                <button>PNB</button>
-                <button>Population</button>
+                <section class="bouttonFoisons">
+                    <button>Voir les données actualisées (wikipedia):</button>
+                    <button>Espérance</button>
+                    <button>Chef</button>
+                    <button>PNB</button>
+                    <button>Population</button>
+                </section>
             </div>
         </div>
     </div>
