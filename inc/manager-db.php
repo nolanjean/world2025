@@ -85,3 +85,20 @@ function getDetailsPays($id) {
     $prep->execute();
     return $prep->fetch(PDO::FETCH_ASSOC);
 }
+
+function percentageLanguage($id){
+    global $pdo;
+    $query = 'SELECT idLanguage, Percentage FROM `CountryLanguage` WHERE idCountry = :id ORDER BY Percentage DESC;';
+    $prep = $pdo->prepare($query);
+    $prep->bindValue(':id', $id, PDO::PARAM_INT);
+    $prep->execute();
+    return $prep->fetchAll();
+}
+function nameLanguage($id) {
+    global $pdo;
+    $query = 'SELECT Name FROM `Language` WHERE id = :id;';
+    $prep = $pdo->prepare($query);
+    $prep->bindValue(':id', $id, PDO::PARAM_INT);
+    $prep->execute();
+    return $prep->fetchColumn(); // Retourne directement la valeur
+}

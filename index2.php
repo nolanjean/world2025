@@ -35,6 +35,7 @@ else{
     <div>
      <table class="table">
          <tr>
+           <th>Drapeau</th>
            <th>Nom</th>
            <th>Population</th>
            <th>Capital</th>
@@ -46,7 +47,14 @@ else{
           foreach($desPays as $pays){
           ?>
           <tr>
-            <td> <?php echo $pays->Name ?></td>
+            <td><?php $drapeau = strtolower($pays->Code2);
+            $source = "images/flag/$drapeau.png";
+            if (!file_exists($source)) {
+              $source = "images/flag/onu.png";
+            }?>          
+            <img src="<?php echo $source; ?>" alt="Drapeau de <?php echo $pays->Name; ?>">
+            </td>
+            <td><a href="index3.php?name=<?= $pays->id ; ?>"><?= $pays->Name; ?> </a></td>
             <td> <?php echo $pays->Population ?></td>
             <td> <?php if (getCapitale($pays->Capital)==NULL){  echo "non capitale";} else echo getCapitale($pays->Capital)->name?></td>
           </tr>

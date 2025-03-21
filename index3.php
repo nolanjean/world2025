@@ -20,15 +20,18 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
     $id = ($_GET['name']);
     $pays= getDetailsPays($id);
     $capital = getCapitale($pays["Capital"]);
+    $percentage = percentageLanguage($id);
 }
-echo "<pre>";
-print_r($pays);
 ?>
 
 <main role="main" class="flex-shrink-0">
 <div class="container">
-        <?php  $drapeau = strtolower($pays["Code2"]); ?>
-        <h1><?php echo $pays["Name"]; ?> <img src="images/flag/<?php echo $drapeau; ?>.png" alt="Drapeau de <?php echo $pays["Name"]; ?>"></h1>
+        <?php  $drapeau = strtolower($pays["Code2"]); 
+            $source = "images/flag/$drapeau.png";
+            if (!file_exists($source)) {
+              $source = "images/flag/onu.png";
+            }?> 
+        <h1><?php echo $pays["Name"]; ?> <img src="<?php echo $source; ?>" alt="Drapeau de <?php echo $pays["Name"]; ?>"></h1>
         <table>
             <tr>
                 <th>Code</th>
@@ -55,28 +58,13 @@ print_r($pays);
                         <th>Pourcentage</th>
                     </tr>
                     <tr>
-                        <td>French</td>
-                        <td>93.6</td>
-                    </tr>
-                    <tr>
-                        <td>Arabic</td>
-                        <td>2.5</td>
-                    </tr>
-                    <tr>
-                        <td>Portuguese</td>
-                        <td>1.2</td>
-                    </tr>
-                    <tr>
-                        <td>Spanish</td>
-                        <td>0.4</td>
-                    </tr>
-                    <tr>
-                        <td>Italian</td>
-                        <td>0.4</td>
-                    </tr>
-                    <tr>
-                        <td>Turkish</td>
-                        <td>0.4</td>
+                        <?php foreach($percentage as $test):
+                            $nameLanguage= nameLanguage($test->idLanguage);
+                            ?>
+                            <tr><td><?php echo $nameLanguage;?></td>
+                            <td><?php echo $test->Percentage?></td>
+                        </tr>
+                        <?php endforeach ?>
                     </tr>
                 </table>
             </div>
