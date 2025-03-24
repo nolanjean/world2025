@@ -49,7 +49,7 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
             </tr>
         </table>
         <section class="test">
-            <button class="ville">Voir les villes</button>
+        <button onclick="window.location.href='index4.php?id=<?php echo $id?>';">Voir les villes</button>	
         </section>
         <div class="details" class="table2Td">
             <div class="langues">
@@ -75,11 +75,11 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
                 <table>
                     <tr>
                         <td>Population</td>
-                        <td>59,225,700</td>
+                        <td><?php echo $pays["Population"]?></td>
                     </tr>
                     <tr>
                         <td>PNB</td>
-                        <td>1,424,285.00</td>
+                        <td><?php echo $pays["GNP"]?></td>
                     </tr>
                     <tr>
                         <td>Chef d'état</td>

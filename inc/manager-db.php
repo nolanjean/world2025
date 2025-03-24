@@ -102,3 +102,12 @@ function nameLanguage($id) {
     $prep->execute();
     return $prep->fetchColumn(); // Retourne directement la valeur
 }
+
+function lookCity($id){
+    global $pdo;
+    $query = 'SELECT Name, Population, District FROM `City` WHERE idCountry = :id;';
+    $prep = $pdo->prepare($query);
+    $prep->bindValue(':id', $id, PDO::PARAM_INT);
+    $prep->execute();
+    return $prep->fetchAll();
+}
