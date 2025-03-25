@@ -111,3 +111,9 @@ function lookCity($id){
     $prep->execute();
     return $prep->fetchAll();
 }
+
+function statRich(){
+    global $pdo;
+    $query = 'SELECT Name,GNP FROM `Country` ORDER BY GNP DESC;';
+    return $pdo->query($query)->fetchAll();
+}

@@ -68,6 +68,7 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
                         </tr>
                         <?php endforeach ?>
                     </tr>
+                    
                 </table>
             </div>
             <div class="economiques">
