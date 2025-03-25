@@ -93,24 +93,18 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
             </div>
             <div class="actualisees">
                 <h2>Données actualisées (source Wikipédia)</h2>
-                <form>
+                <form action="update.php" method="POST">
                     <label for="population">Population:</label>
-                    <input type="text" id="population" name="population"><br>
+                    <input type="text" id="population" name="population" value=""><br>          
                     <label for="pnb">PNB:</label>
-                    <input type="text" id="pnb" name="pnb"><br>
+                    <input type="text" id="pnb" name="pnb" value=""><br>            
                     <label for="chef">Chef d'état:</label>
-                    <input type="text" id="chef" name="chef"><br>
+                    <input type="text" id="chef" name="chef" value=""><br>               
                     <label for="esperance">Espérance de vie:</label>
-                    <input type="text" id="esperance" name="esperance"><br>
+                    <input type="text" id="esperance" name="esperance" value=""><br>
+                    <input type="hidden" name="id" value="<?php echo $id; ?>"> <!-- Passer l'ID du pays pour la mise à jour -->
                     <button type="submit">Mettre à jour</button>
                 </form>
-                <section class="bouttonFoisons">
-                    <button>Voir les données actualisées (wikipedia):</button>
-                    <button>Espérance</button>
-                    <button>Chef</button>
-                    <button>PNB</button>
-                    <button>Population</button>
-                </section>
             </div>
         </div>
     </div>
