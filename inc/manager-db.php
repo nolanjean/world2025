@@ -117,3 +117,9 @@ function statRich(){
     $query = 'SELECT Name,GNP FROM `Country` ORDER BY GNP DESC;';
     return $pdo->query($query)->fetchAll();
 }
+
+function statRichPerHab(){
+    global $pdo;
+    $query = 'SELECT Name,Population,GNP,(GNP/Population) as pibperhab FROM Country ORDER BY `pibperhab` DESC';
+    return $pdo->query($query)->fetchAll();
+}

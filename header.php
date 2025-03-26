@@ -83,7 +83,7 @@
              aria-expanded="false">Statistiques</a>
              <div class="dropdown-menu" aria-labelledby="dropdown01">
                   <a class="dropdown-item" href="richesse.php">PIB par Pays</a>
-                  <a class="dropdown-item" href="">PIB par habitant</a>
+                  <a class="dropdown-item" href="pibperhab.php">PIB par habitant</a>
               </div>
         </li>
       </div>
