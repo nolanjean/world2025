@@ -83,7 +83,7 @@ function getDetailsPays($id) {
     $prep = $pdo->prepare($query);
     $prep->bindValue(':id', $id, PDO::PARAM_INT);
     $prep->execute();
-    return $prep->fetch(PDO::FETCH_ASSOC);
+    return $prep->fetch();
 }
 
 function percentageLanguage($id){
@@ -122,4 +122,13 @@ function statRichPerHab(){
     global $pdo;
     $query = 'SELECT Name,Population,GNP,(GNP/Population) as pibperhab FROM Country ORDER BY `pibperhab` DESC';
     return $pdo->query($query)->fetchAll();
+}
+
+function getPaysByName($name)  {
+    global $pdo;
+    $query = 'SELECT * FROM Country WHERE Name = :name;';
+    $prep = $pdo->prepare($query);
+    $prep->bindValue(':name', $name, PDO::PARAM_STR);
+    $prep->execute();
+    return $prep->fetch();
 }

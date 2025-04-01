@@ -20,3 +20,17 @@
 <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"> </script>
 <script src="https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap4.js"> </script>
 <script>new DataTable('#example');</script>
+
+<script src="https://cdn.jsdelivr.net/npm/maphilight@1.4.2/jquery.maphilight.min.js"
+></script>
+<script type="text/javascript">
+  $(function() {
+  $('.map').maphilight({fade: false});
+});
+  $("#projmap area").click( function () {
+  var pays = $(this).attr('title');
+  var lien = "index3.php?name="+pays;
+  alert(lien)
+  $(this).attr("href",lien);
+  });
+</script>

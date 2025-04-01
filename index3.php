@@ -17,21 +17,26 @@
 require_once 'header.php'; 
 require_once 'inc/manager-db.php';
 if (isset($_GET['name']) && !empty($_GET['name']) ){
-    $id = ($_GET['name']);
-    $pays= getDetailsPays($id);
-    $capital = getCapitale($pays["Capital"]);
-    $percentage = percentageLanguage($id);
+    $name = ($_GET['name']);
+    $pays = getPaysByName($name);
+    $idPays = $pays->id;
+}elseif (isset($_GET['id']) && !empty($_GET['id'])) {
+    $idPays = $_GET['id'];
+    $pays= getDetailsPays($idPays);
 }
+$capital = getCapitale($pays->Capital);
+$percentage = percentageLanguage($idPays);
+
 ?>
 <link rel="stylesheet" href="css/style.css">
 <main role="main" class="flex-shrink-0">
 <div class="container">
-        <?php  $drapeau = strtolower($pays["Code2"]); 
+        <?php  $drapeau = strtolower($pays->Code2); 
             $source = "images/flag/$drapeau.png";
             if (!file_exists($source)) {
               $source = "images/flag/onu.png";
             }?> 
-        <h1 class="nomPay"><?php echo $pays["Name"]; ?> <img src="<?php echo $source; ?>" alt="Drapeau de <?php echo $pays["Name"]; ?>"></h1>
+        <h1 class="nomPay"><?php echo $pays->Name; ?> <img src="<?php echo $source; ?>" alt="Drapeau de <?php echo $pays->Name; ?>"></h1>
         <table class="infoPay">
             <tr>
                 <th>Code</th>
@@ -41,11 +46,11 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
                 <th>Superficie</th>
             </tr>
             <tr>
-                <td><?php echo $pays["Code"]?></td>
-                <td><?php echo $pays["Continent"]?></td>
+                <td><?php echo $pays->Code?></td>
+                <td><?php echo $pays->Continent?></td>
                 <td><?php if ($capital==NULL){  echo "non capitale";} else echo $capital->name?></td>
-                <td><?php echo $pays["Population"]?></td>
-                <td><?php echo $pays["SurfaceArea"]?></td>
+                <td><?php echo $pays->Population?></td>
+                <td><?php echo $pays->SurfaceArea?></td>
             </tr>
         </table>
         <section class="test">
@@ -76,19 +81,19 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
                 <table>
                     <tr>
                         <td>Population</td>
-                        <td><?php echo $pays["Population"]?></td>
+                        <td><?php echo $pays->Population?></td>
                     </tr>
                     <tr>
                         <td>PNB</td>
-                        <td><?php echo $pays["GNP"]?></td>
+                        <td><?php echo $pays->GNP?></td>
                     </tr>
                     <tr>
                         <td>Chef d'état</td>
-                        <td><?php echo $pays["HeadOfState"] ?></td>
+                        <td><?php echo $pays->HeadOfState?></td>
                     </tr>
                     <tr>
                         <td>Espérance de vie</td>
-                        <td><?php echo $pays["LifeExpectancy"] ?></td>
+                        <td><?php echo $pays->LifeExpectancy ?></td>
                     </tr>
                 </table>
             </div>

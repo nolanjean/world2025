@@ -74,7 +74,7 @@
              aria-expanded="false">Pays</a>
              <div class="dropdown-menu" aria-labelledby="dropdown01">
                   <?php foreach($lesPays as $pays) : ?>
-                  <a class="dropdown-item" href="index3.php?name=<?= $pays->id ; ?>"><?= $pays->Name; ?> </a>
+                  <a class="dropdown-item" href="index3.php?id=<?= $pays->id ; ?>"><?= $pays->Name; ?> </a>
                   <?php endforeach ; ?>
               </div>
         </li>
@@ -86,6 +86,7 @@
                   <a class="dropdown-item" href="pibperhab.php">PIB par habitant</a>
               </div>
         </li>
+        <a class="nav-link dropdown-toggle" href="mapWorld.php">Geomap</a>
       </div>
       </ul>
       <ul class="navbar-nav ml-auto">
