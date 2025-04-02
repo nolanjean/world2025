@@ -9,7 +9,7 @@ if (isset($_GET['id']) && !empty($_GET['id']) ){
 ?>
 <link rel="stylesheet" href="css/style.css">
 <main>
-    <h1>Les villes de <?php echo $pays["Name"]?></h1>
+    <h1>Les villes de <?php echo $pays->Name?></h1>
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>

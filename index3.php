@@ -27,6 +27,21 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
 $capital = getCapitale($pays->Capital);
 $percentage = percentageLanguage($idPays);
 
+// Traitement du formulaire de mise à jour
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
+    // Vérifiez si les champs sont vides et utilisez les valeurs existantes si nécessaire
+    $population = !empty($_POST['population']) ? $_POST['population'] : $pays["Population"];
+    $pnb = !empty($_POST['pnb']) ? $_POST['pnb'] : $pays["GNP"];
+    $chef = !empty($_POST['chef']) ? $_POST['chef'] : $pays["HeadOfState"];
+    $esperance = !empty($_POST['esperance']) ? $_POST['esperance'] : $pays["LifeExpectancy"];
+
+    // Appeler la fonction pour mettre à jour les informations
+    ajouterInformation($idPays, $population, $pnb, $chef, $esperance);
+
+    // Recharger les données mises à jour
+    $pays = getDetailsPays($idPays);
+    echo "<p style='color: green;'>Les informations ont été mises à jour avec succès.</p>";
+}
 ?>
 <link rel="stylesheet" href="css/style.css">
 <main role="main" class="flex-shrink-0">
@@ -54,7 +69,7 @@ $percentage = percentageLanguage($idPays);
             </tr>
         </table>
         <section class="test">
-        <button onclick="window.location.href='index4.php?id=<?php echo $id?>';">Voir les villes</button>	
+        <button onclick="window.location.href='index4.php?id=<?php echo $idPays?>';">Voir les villes</button>	
         </section>
         <div class="details" class="table2Td">
             <div class="langues">
@@ -99,17 +114,16 @@ $percentage = percentageLanguage($idPays);
             </div>
             <div class="actualisees">
                 <h2>Données actualisées (source Wikipédia)</h2>
-                <form action="update.php" method="POST">
+                <form action="index3.php?id=<?php echo $idPays; ?>" method="POST">
                     <label for="population">Population:</label>
-                    <input type="text" id="population" name="population" value=""><br>          
+                    <input type="text" id="population" name="population" value="<?php echo $pays->Population; ?>"><br>
                     <label for="pnb">PNB:</label>
-                    <input type="text" id="pnb" name="pnb" value=""><br>            
+                    <input type="text" id="pnb" name="pnb" value="<?php echo $pays->GNP; ?>"><br>
                     <label for="chef">Chef d'état:</label>
-                    <input type="text" id="chef" name="chef" value=""><br>               
+                    <input type="text" id="chef" name="chef" value="<?php echo $pays->HeadOfState; ?>"><br>
                     <label for="esperance">Espérance de vie:</label>
-                    <input type="text" id="esperance" name="esperance" value=""><br>
-                    <input type="hidden" name="id" value="<?php echo $id; ?>"> <!-- Passer l'ID du pays pour la mise à jour -->
-                    <button type="submit">Mettre à jour</button>
+                    <input type="text" id="esperance" name="esperance" value="<?php echo $pays->LifeExpectancy; ?>"><br>
+                    <button class="btndetailPays" type="submit" name="update">Mettre à jour</button>
                 </form>
             </div>
         </div>

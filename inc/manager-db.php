@@ -132,3 +132,20 @@ function getPaysByName($name)  {
     $prep->execute();
     return $prep->fetch();
 }
+
+function ajouterInformation($idPays, $population, $pnb, $chefEtat, $esperanceDeVie) {
+    global $pdo;
+    $population = (int) $population;
+    $requete = "UPDATE Country SET Population = :population, GNP = :pnb, HeadOfState = :chefEtat, LifeExpectancy = :esperance WHERE id = :id";
+    try {
+        $prep = $pdo->prepare($requete);
+        $prep->bindValue(':population', $population, PDO::PARAM_INT);
+        $prep->bindValue(':pnb', $pnb, PDO::PARAM_STR);
+        $prep->bindValue(':chefEtat', $chefEtat, PDO::PARAM_STR);
+        $prep->bindValue(':esperance', $esperanceDeVie, PDO::PARAM_STR);
+        $prep->bindValue(':id', $idPays, PDO::PARAM_INT);
+        $prep->execute();
+    } catch (Exception $e) {
+        die("Erreur dans la requête : " . $e->getMessage());
+    }
+}
