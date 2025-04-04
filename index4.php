@@ -27,13 +27,8 @@ if (isset($_GET['id']) && !empty($_GET['id']) ){
                 </tr>
             <?php endforeach?>
         </tbody>
-
-        
     </table>
 </main>
-
-
-
 <?php
 require_once 'javascripts.php';
 require_once 'footer.php';
