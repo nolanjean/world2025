@@ -19,15 +19,13 @@ if (isset($_GET['id']) && !empty($_GET['id']) ){
             </tr>
         </thead>
         <tbody>
-            <?php foreach($city as $villes){
-            ?>
-            <tr>
-                <td><?php echo $villes->Name ?></td>
-                <td><?php echo $villes->Population ?></td>
-                <td><?php echo $villes->District ?></td>
-            </tr>
-        <?php
-        }?>
+            <?php foreach($city as $villes):?>
+                <tr>
+                    <td><?php echo $villes->Name ?></td>
+                    <td><?php echo $villes->Population ?></td>
+                    <td><?php echo $villes->District ?></td>
+                </tr>
+            <?php endforeach?>
         </tbody>
 
         
